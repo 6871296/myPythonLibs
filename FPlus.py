@@ -22,37 +22,37 @@ class FPlus():
                 self.ab=None
                 break
         self.path=file
-    def read(self):
+    def r(self):
         return self.r.read()
     
-    def write(self,str:str):
+    def w(self,str:str):
         self.w.write(str)
     
-    def read_b(self):
+    def rb(self):
         if not self.text_readable:
             return self.rb.read()
         else:
             FileExistsError("This FPlus isn't byte-readable, please use read() or write() to read or write the file.")
 
-    def wrte_x(self,str:str):
+    def wx(self,str:str):
         if not self.text_readable:
             self.x.write(str)
         else:
             FileExistsError("This FPlus isn't byte-readable, please use read() or write() to read or write the file.")
-    def write_b(self,str:str):
+    def wb(self,str:str):
         if not self.text_readable:
             self.wb.write(str)
         else:
             FileExistsError("This FPlus isn't byte-readable, please use read() or write() to read or write the file.")
 
-    def append_b(self,str:str,starting=0):
+    def ab(self,str:str,starting=0):
         if not self.text_readable:
             self.ab.seek(len(self.ab.read()-starting,2))
             self.ab.write(str)
         else:
             FileExistsError("This FPlus isn't byte-readable, please use read() or write() to read or write the file.")
     
-    def append(self,str:str,starting=0):
+    def a(self,str:str,starting=0):
         self.a.seek(len(self.a.read()-starting,2))
         self.a.write(str)
 
@@ -67,7 +67,7 @@ class FPlus():
             self.ab.close()
         del self
     
-    def move_to(self,path:str):#please use i=i.move_to() to save the file!
+    def move(self,path:str):#please use i=i.move() to save the file!
         pth=self.path
         self.close()
         os.rename(pth,path)
